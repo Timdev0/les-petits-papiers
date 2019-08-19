@@ -1,6 +1,14 @@
-# les-petits-papiers
+# Les Petits Papiers
 
 ## Project setup
+
+### Environment variables
+
+1. create a `.env.local` at the root of the project
+2. add the `VUE_APP_DATOCMS=XXXXXXX` environment variable with the API token from the DatoCMS project
+
+### Install dependencies
+
 ```
 yarn install
 ```
@@ -13,11 +21,6 @@ yarn run serve
 ### Compiles and minifies for production
 ```
 yarn run build
-```
-
-### Run your tests
-```
-yarn run test
 ```
 
 ### Lints and fixes files
