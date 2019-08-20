@@ -53,9 +53,12 @@ export const Book = gql`
 export const Home = gql`
   query Home {
     home {
+      reserve
+
       carousel {
         id
         caption
+        subtitle
         image {
           url
           width
