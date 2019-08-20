@@ -25,9 +25,13 @@ export default {
 @import '../node_modules/bootstrap/scss/bootstrap';
 @import '../node_modules/bootswatch/dist/flatly/bootswatch';
 
+html,
+body {
+  background-color: #ecf0f1;
+}
+
 #app {
-  width: 100vw;
-  height: 100vh;
+  overflow-x: hidden;
   background-color: #ecf0f1;
 }
 </style>
