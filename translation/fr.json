@@ -1288,5 +1288,5 @@
   "environmentVariablesInput.key": "Env variable name",
   "environmentVariablesInput.value": "Value",
 
-  "admin.users.title": "Collaborators"
+  "admin.users.title": "Collaborateurs"
 }
