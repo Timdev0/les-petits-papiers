@@ -41,12 +41,64 @@
     <div class="container reserve-block">
       <h2>Les réservations</h2>
 
-      <p>{{ home.reserve }}</p>
+      <p v-html="home.reserve" />
+    </div>
+
+    <div class="container school-lists">
+      <h2>Les listes de rentrées</h2>
+
+      <p v-html="home.school" />
+
+      <div class="row">
+        <div
+          v-for="(list, index) in home.schoolLists"
+          :key="'list-' + index"
+          class="col flex justify-content-center align-items-center"
+        >
+          <a :href="list.url" class="">
+            <img
+              :src="require('../assets/icons/xls.png')"
+              alt="XLS icon"
+              style="max-height: 128px;"
+            />
+          </a>
+
+          <p><b>{{ list.title }}</b></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container new-books">
+      <h2>Nouveautés</h2>
+
+      <div
+        v-for="(booksGroup, index) in chunk(home.newBooks, 3)"
+        :key="'books-group-' + index"
+        class="row"
+      >
+        <div
+          v-for="(book, e) in booksGroup"
+          :key="'new-book-' + e"
+          class="col-lg-3 col-md-4 col-sm-4 col-4 d-flex align-items-stretch"
+        >
+          <div class="card">
+            <img :src="book.image.url" class="card-img-top" :alt="book.image.alt">
+
+            <div class="card-body">
+              <h5 class="card-title">{{book.name}}</h5>
+              <p class="card-text">{{book.author.name}}</p>
+              <a href="#" class="btn btn-primary">Détails du livre</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import chunk from 'lodash/chunk';
+
 import { AllBooks, Book, Home } from '../queries';
 
 export default {
@@ -64,6 +116,12 @@ export default {
         },
         fetchPolicy: 'network-only',
       };
+    },
+  },
+
+  methods: {
+    chunk(elements, size) {
+      return chunk(elements, size);
     },
   },
 };
@@ -102,6 +160,39 @@ export default {
 
   p {
     white-space: pre-wrap;
+  }
+}
+
+.school-lists {
+  padding: 16px 24px;
+  margin: 32px auto;
+  border-radius: 4px;
+  background: #fff;
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  p {
+    white-space: pre-wrap;
+  }
+}
+
+.new-books {
+  padding: 16px 24px;
+  margin: 32px auto;
+  border-radius: 4px;
+  background: #fff;
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
   }
 }
 </style>
