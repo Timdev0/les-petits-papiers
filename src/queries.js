@@ -61,11 +61,39 @@ export const Home = gql`
   query Home {
     home {
       reserve
+      school
 
       carousel {
         id
         caption
         subtitle
+        image {
+          url
+          width
+          height
+        }
+      }
+
+      schoolLists {
+        url
+        format
+        title
+      }
+
+      newBooks {
+        id
+        slug
+        publishDate
+        summary
+        author {
+          name
+        }
+        categorie {
+          name
+        }
+        editor {
+          name
+        }
         image {
           url
           width
