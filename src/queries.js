@@ -8,9 +8,16 @@ export const AllBooks = gql`
   query AllBooks {
     allBooks {
       id
+      name
       slug
       publishDate
       summary
+      image {
+        url
+        height
+        width
+        alt
+      }
       author {
         name
       }

@@ -17,12 +17,12 @@
 
       <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Accueil</a>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/" tag="a">Accueil</router-link>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="#">Livres</a>
+            <router-link class="nav-link" to="/livres" tag="a">Livres</router-link>
           </li>
 
           <li class="nav-item dropdown">
