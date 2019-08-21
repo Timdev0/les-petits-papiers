@@ -1,7 +1,7 @@
 <template>
   <div id="navbar-component">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <a class="navbar-brand" href="#">Les petits papiers</a>
+      <router-link to="/" tag="a" class="navbar-brand">Les Petits Papiers</router-link>
 
       <button
         class="navbar-toggler"
