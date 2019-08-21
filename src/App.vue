@@ -2,7 +2,9 @@
   <div id="app">
     <navbar />
 
-    <router-view />
+    <div class="router-view-wrapper">
+      <router-view />
+    </div>
 
     <footbar />
   </div>
@@ -31,7 +33,14 @@ body {
 }
 
 #app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vw;
   overflow-x: hidden;
   background-color: #ecf0f1;
+}
+
+.router-view-wrapper {
+  flex-grow: 1;
 }
 </style>
