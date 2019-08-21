@@ -23,9 +23,9 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../node_modules/bootswatch/dist/flatly/variables';
-@import '../node_modules/bootstrap/scss/bootstrap';
-@import '../node_modules/bootswatch/dist/flatly/bootswatch';
+@import "../node_modules/bootswatch/dist/flatly/variables";
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import "../node_modules/bootswatch/dist/flatly/bootswatch";
 
 html,
 body {
@@ -36,6 +36,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vw;
+  margin-top: 70px;
   overflow-x: hidden;
   background-color: #ecf0f1;
 }
