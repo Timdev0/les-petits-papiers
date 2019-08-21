@@ -99,24 +99,13 @@
 <script>
 import chunk from 'lodash/chunk';
 
-import { AllBooks, Book, Home } from '../queries';
+import { Home } from '../queries';
 
 export default {
   name: 'home',
 
   apollo: {
     home: Home,
-    allBooks: AllBooks,
-
-    book() {
-      return {
-        query: Book,
-        variables: {
-          id: '1370262',
-        },
-        fetchPolicy: 'network-only',
-      };
-    },
   },
 
   methods: {

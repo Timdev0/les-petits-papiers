@@ -5,8 +5,8 @@ import gql from 'graphql-tag';
  * Make sure to build the permalink with `slug-id`.
  */
 export const AllBooks = gql`
-  query AllBooks {
-    allBooks {
+  query AllBooks($first: IntType, $skip: IntType) {
+    allBooks(first: $first, skip: $skip) {
       id
       name
       slug

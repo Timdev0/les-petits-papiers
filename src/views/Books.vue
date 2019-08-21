@@ -26,7 +26,16 @@ export default {
   name: 'Books',
 
   apollo: {
-    allBooks: AllBooks,
+    allBooks() {
+      return {
+        query: AllBooks,
+        fetchPolicy: 'no-cache',
+        variables: {
+          first: 20,
+          skip: 0,
+        },
+      };
+    },
   },
 };
 </script>
