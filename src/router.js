@@ -3,6 +3,7 @@ import Router from 'vue-router';
 
 import Home from './views/Home.vue';
 import Books from './views/Books.vue';
+import Search from './views/Search.vue';
 
 Vue.use(Router);
 
@@ -19,6 +20,11 @@ export default new Router({
       path: '/livres',
       name: 'books',
       component: Books,
+    },
+    {
+      path: '/recherche',
+      name: 'search',
+      component: Search,
     },
   ],
 });

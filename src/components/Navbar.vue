@@ -34,9 +34,7 @@
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
-            >
-              Papiers
-            </a>
+            >Papiers</a>
 
             <div class="dropdown-menu" aria-labelledby="dropdown-papiers">
               <a class="dropdown-item" href="#">Papiers adultes</a>
@@ -46,10 +44,17 @@
           </li>
         </ul>
 
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Rechercher un livre">
-          <button class="btn btn-secondary my-2 my-sm-0" type="submit">Recherche</button>
-        </form>
+        <div class="form-inline my-2 my-lg-0">
+          <input
+            v-model="query"
+            @keyup.enter="search"
+            class="form-control mr-sm-2"
+            type="text"
+            placeholder="Rechercher un livre"
+          />
+
+          <button @click="search" class="btn btn-secondary my-2 my-sm-0">Recherche</button>
+        </div>
       </div>
     </nav>
   </div>
@@ -57,6 +62,20 @@
 
 <script>
 export default {
-  name: 'Navbar',
+  name: 'navbar',
+
+  data() {
+    return {
+      query: '',
+    };
+  },
+
+  methods: {
+    search() {
+      const encodedQuery = encodeURIComponent(this.query);
+
+      this.$router.push(`/recherche?query=${encodedQuery}`);
+    },
+  },
 };
 </script>
