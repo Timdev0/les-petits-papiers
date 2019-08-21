@@ -37,9 +37,9 @@
             >Papiers</a>
 
             <div class="dropdown-menu" aria-labelledby="dropdown-papiers">
-              <a class="dropdown-item" href="#">Papiers adultes</a>
-              <a class="dropdown-item" href="#">Papiers ados</a>
-              <a class="dropdown-item" href="#">Papiers enfants</a>
+              <router-link class="dropdown-item" tag="a" to="/papiers/adultes">Papiers adultes</router-link>
+              <router-link class="dropdown-item" to="/papiers/ados">Papiers ados</router-link>
+              <router-link class="dropdown-item" to="/papiers/enfants">Papiers enfants</router-link>
             </div>
           </li>
         </ul>

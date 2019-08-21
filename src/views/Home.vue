@@ -51,7 +51,7 @@
         <p v-html="home.reserve" />
       </div>
 
-      <div class="container school-lists">
+      <div class="container school-lists" v-if="home.enableSchoolLists">
         <h2>Les listes de rentrées</h2>
 
         <p v-html="home.school" />
@@ -173,6 +173,21 @@ export default {
 
   p {
     white-space: pre-wrap;
+  }
+
+  a {
+    margin: 0 auto;
+    display: block;
+  }
+
+  img {
+    max-height: 128px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  a + p {
+    text-align: center;
   }
 }
 

@@ -100,6 +100,7 @@ export const Home = gql`
     home {
       reserve
       school
+      enableSchoolLists
 
       carousel {
         id
@@ -137,6 +138,94 @@ export const Home = gql`
           url
           width
           height
+        }
+      }
+    }
+  }
+`;
+
+export const Paper = gql`
+  query Paper {
+    paper {
+      adultsBooks {
+        description
+        video {
+          url
+        }
+        existingBook {
+          id
+          name
+          slug
+          publishDate
+          summary
+          author {
+            name
+          }
+          categorie {
+            name
+          }
+          editor {
+            name
+          }
+          image {
+            url
+            width
+            height
+          }
+        }
+      }
+      teensBooks {
+        description
+        video {
+          url
+        }
+        existingBook {
+          id
+          name
+          slug
+          publishDate
+          summary
+          author {
+            name
+          }
+          categorie {
+            name
+          }
+          editor {
+            name
+          }
+          image {
+            url
+            width
+            height
+          }
+        }
+      }
+      kidsBooks {
+        description
+        video {
+          url
+        }
+        existingBook {
+          id
+          name
+          slug
+          publishDate
+          summary
+          author {
+            name
+          }
+          categorie {
+            name
+          }
+          editor {
+            name
+          }
+          image {
+            url
+            width
+            height
+          }
         }
       }
     }

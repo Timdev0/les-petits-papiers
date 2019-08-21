@@ -4,6 +4,7 @@ import Router from 'vue-router';
 import Home from './views/Home.vue';
 import Books from './views/Books.vue';
 import Search from './views/Search.vue';
+import Paper from './views/Paper.vue';
 
 Vue.use(Router);
 
@@ -25,6 +26,11 @@ export default new Router({
       path: '/recherche',
       name: 'search',
       component: Search,
+    },
+    {
+      path: '/papiers/:category',
+      name: 'paper',
+      component: Paper,
     },
   ],
 });

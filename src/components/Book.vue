@@ -1,11 +1,21 @@
 <template>
   <div id="book-component">
     <div class="card">
-      <img :src="book.image.url" class="card-img-top" :alt="book.name">
+      <img :src="book.image.url" class="card-img-top" :alt="book.name" />
 
       <div class="card-body">
         <h5 class="card-title">{{book.name}}</h5>
+
         <p class="card-text">{{book.author.name}}</p>
+
+        <div class="tags">
+          <div
+            v-for="(category, i) in book.categorie"
+            :key="'book-category-' + i"
+            class="category-tag"
+          >{{ category.name }}</div>
+        </div>
+
         <a href="#" class="btn btn-primary">Détails du livre</a>
       </div>
     </div>
@@ -30,5 +40,20 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+}
+
+.tags {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 24px;
+
+  .category-tag {
+    display: inline-flex;
+    margin-left: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    background-color: #4fc08d;
+    color: white;
+  }
 }
 </style>

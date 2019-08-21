@@ -1,12 +1,14 @@
 <template>
   <div class="books-vue">
-    <div v-if="$apollo.loading" class="loading-screen container">
+    <div v-if="$apollo.loading || !allBooks" class="loading-screen container">
       <self-building-square-spinner :animation-duration="3000" :size="50" color="#2C3E50" />
 
       <p>Chargement en cours...</p>
     </div>
 
     <div v-else class="books-container container">
+      <h2>Liste des livres disponibles</h2>
+
       <div
         v-for="(booksGroup, i) in chunk(allBooks, itemsPerRow)"
         :key="'book-group-' + i"
@@ -19,6 +21,12 @@
         >
           <book :book="book" class="d-flex align-items-stretch" />
         </div>
+      </div>
+
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-secondary">Précédent</button>
+
+        <button type="button" class="btn btn-secondary" @click="next">Suivant</button>
       </div>
     </div>
   </div>
@@ -47,11 +55,26 @@ export default {
       return {
         query: AllBooks,
         fetchPolicy: 'no-cache',
-        variables: {
-          first: 6,
-          skip: 0,
+        variables() {
+          return {
+            first: this.first,
+            skip: this.skip,
+          };
         },
       };
+    },
+  },
+
+  data() {
+    return {
+      first: 6,
+      skip: 0,
+    };
+  },
+
+  methods: {
+    next() {
+      this.skip += this.first;
     },
   },
 };
@@ -71,5 +94,11 @@ export default {
   padding: 24px;
   background-color: #fff;
   border-radius: 4px;
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 24px;
+    text-align: center;
+  }
 }
 </style>
