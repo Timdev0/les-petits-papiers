@@ -1,7 +1,7 @@
 <template>
   <div id="book-component">
     <div class="card">
-      <img :src="book.image.url" class="card-img-top" :alt="book.image.alt">
+      <img :src="book.image.url" class="card-img-top" :alt="book.name">
 
       <div class="card-body">
         <h5 class="card-title">{{book.name}}</h5>

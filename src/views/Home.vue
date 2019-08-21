@@ -18,7 +18,7 @@
           class="carousel-item"
           :class="{ 'active': index === 0 }"
         >
-          <img :src="carouselItem.image.url">
+          <img :src="carouselItem.image.url" :alt="carouselItem.caption">
 
           <div class="carousel-caption d-md-block">
             <h5>{{ carouselItem.caption }}</h5>
@@ -82,7 +82,7 @@
           class="col-lg-3 col-md-4 col-sm-4 col-4 d-flex align-items-stretch"
         >
           <div class="card">
-            <img :src="book.image.url" class="card-img-top" :alt="book.image.alt">
+            <img :src="book.image.url" class="card-img-top" :alt="book.name">
 
             <div class="card-body">
               <h5 class="card-title">{{book.name}}</h5>
