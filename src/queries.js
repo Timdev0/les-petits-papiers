@@ -31,6 +31,37 @@ export const AllBooks = gql`
   }
 `;
 
+export const AllBooksSearch = gql`
+  query AllBooksSearch($search: String!) {
+    allBooks(filter: {
+      name: {
+        eq: $search
+      }
+    }) {
+      id
+      name
+      slug
+      publishDate
+      summary
+      image {
+        url
+        height
+        width
+        alt
+      }
+      author {
+        name
+      }
+      categorie {
+        name
+      }
+      editor {
+        name
+      }
+    }
+  }
+`;
+
 /**
  * Find a book by its ID.
  */
