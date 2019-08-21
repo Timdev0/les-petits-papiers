@@ -81,24 +81,16 @@
         <h2>Nouveautés</h2>
 
         <div
-          v-for="(booksGroup, index) in chunk(home.newBooks, 3)"
+          v-for="(booksGroup, index) in chunk(home.newBooks, itemsPerRow)"
           :key="'books-group-' + index"
           class="row"
         >
           <div
             v-for="(book, e) in booksGroup"
             :key="'new-book-' + e"
-            class="col-lg-3 col-md-4 col-sm-4 col-4 d-flex align-items-stretch"
+            class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 d-flex align-items-stretch"
           >
-            <div class="card">
-              <img :src="book.image.url" class="card-img-top" :alt="book.name" />
-
-              <div class="card-body">
-                <h5 class="card-title">{{book.name}}</h5>
-                <p class="card-text">{{book.author.name}}</p>
-                <a href="#" class="btn btn-primary">Détails du livre</a>
-              </div>
-            </div>
+            <book :book="book" class="d-flex align-items-stretch" />
           </div>
         </div>
       </div>
@@ -111,15 +103,18 @@ import { SelfBuildingSquareSpinner } from 'epic-spinners';
 
 import { Home } from '../queries';
 import { chunkMixin } from '../mixins/chunk';
+import { itemsPerRowMixin } from '../mixins/items-per-row';
+import Book from '../components/Book.vue';
 
 export default {
   name: 'home',
 
   components: {
     SelfBuildingSquareSpinner,
+    Book,
   },
 
-  mixins: [chunkMixin],
+  mixins: [chunkMixin, itemsPerRowMixin],
 
   apollo: {
     home: Home,
