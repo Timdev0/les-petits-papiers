@@ -82,6 +82,7 @@ export const Home = gql`
 
       newBooks {
         id
+        name
         slug
         publishDate
         summary
