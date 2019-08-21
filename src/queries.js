@@ -32,12 +32,19 @@ export const AllBooks = gql`
 `;
 
 export const AllBooksSearch = gql`
-  query AllBooksSearch($search: String!) {
-    allBooks(filter: {
-      name: {
-        eq: $search
+  query AllBooksSearch($searchRegex: String!) {
+    allBooks(
+      first: 6,
+      skip: 0,
+      filter: {
+        name: {
+          matches: {
+            pattern: $searchRegex,
+            caseSensitive: false
+          }
+        }
       }
-    }) {
+    ) {
       id
       name
       slug
