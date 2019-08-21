@@ -1,0 +1,15 @@
+.loading-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 32px auto;
+  padding: 24px;
+  background-color: #fff;
+  border-radius: 4px;
+
+  p {
+    font-size: 1.25rem;
+    margin: 24px 0 0;
+  }
+}

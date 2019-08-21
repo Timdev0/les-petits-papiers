@@ -1,6 +1,12 @@
 <template>
-  <div class="books-vue" v-if="!$apollo.loading">
-    <div class="books-container container">
+  <div class="books-vue">
+    <div v-if="$apollo.loading" class="loading-screen container">
+      <self-building-square-spinner :animation-duration="3000" :size="50" color="#2C3E50" />
+
+      <p>Chargement en cours...</p>
+    </div>
+
+    <div v-else class="books-container container">
       <div
         v-for="(booksGroup, i) in chunk(allBooks, itemsPerRow)"
         :key="'book-group-' + i"
@@ -19,6 +25,8 @@
 </template>
 
 <script>
+import { SelfBuildingSquareSpinner } from 'epic-spinners';
+
 import { AllBooks } from '../queries';
 import { chunkMixin } from '../mixins/chunk';
 import { itemsPerRowMixin } from '../mixins/items-per-row';
@@ -30,6 +38,7 @@ export default {
   mixins: [chunkMixin, itemsPerRowMixin],
 
   components: {
+    SelfBuildingSquareSpinner,
     Book,
   },
 
@@ -49,6 +58,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../assets/scss/loading-screen";
+
 .row {
   display: flex;
   justify-content: space-between;
