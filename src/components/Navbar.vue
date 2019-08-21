@@ -1,6 +1,6 @@
 <template>
   <div id="navbar-component">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
       <router-link to="/" tag="a" class="navbar-brand">Les Petits Papiers</router-link>
 
       <button
