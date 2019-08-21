@@ -1,18 +1,17 @@
 <template>
   <div class="books-vue" v-if="!$apollo.loading">
-    <div class="container">
-      <div class="row">
-        <div v-for="(allBooksItem, index) in allBooks" :key="'all-books-item-' + index">
-          <div class="col-md-4">
-            <div class="card" style="width: 18rem;">
-              <img :src="allBooksItem.image.url" class="card-img-top" :alt="allBooksItem.image.alt">
-              <div class="card-body">
-                <h5 class="card-title">{{allBooksItem.name}}</h5>
-                <p class="card-text">{{allBooksItem.author.name}}</p>
-                <a href="#" class="btn btn-primary">Détails du livre</a>
-              </div>
-            </div>
-          </div>
+    <div class="books-container container">
+      <div
+        v-for="(booksGroup, i) in chunk(allBooks, 3)"
+        :key="'book-group-' + i"
+        class="row"
+      >
+        <div
+          v-for="(book, e) in booksGroup"
+          :key="'all-books-item-' + e"
+          class="col-lg-3 col-md-4 col-sm-4 col-4 d-flex align-items-stretch"
+        >
+          <book :book="book" class="d-flex align-items-stretch" />
         </div>
       </div>
     </div>
@@ -21,9 +20,17 @@
 
 <script>
 import { AllBooks } from '../queries';
+import { chunkMixin } from '../mixins/chunk';
+import Book from '../components/Book.vue';
 
 export default {
   name: 'Books',
+
+  mixins: [chunkMixin],
+
+  components: {
+    Book,
+  },
 
   apollo: {
     allBooks() {
@@ -41,7 +48,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.card-img-top{
-  max-height: 380px;
+.books-container {
+  margin: 32px auto;
+  padding: 24px;
+  background-color: #fff;
+  border-radius: 4px;
 }
 </style>

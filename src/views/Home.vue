@@ -97,21 +97,16 @@
 </template>
 
 <script>
-import chunk from 'lodash/chunk';
-
 import { Home } from '../queries';
+import { chunkMixin } from '../mixins/chunk';
 
 export default {
   name: 'home',
 
+  mixins: [chunkMixin],
+
   apollo: {
     home: Home,
-  },
-
-  methods: {
-    chunk(elements, size) {
-      return chunk(elements, size);
-    },
   },
 };
 </script>
