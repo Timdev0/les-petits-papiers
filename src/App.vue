@@ -44,4 +44,8 @@ body {
 .router-view-wrapper {
   flex-grow: 1;
 }
+
+.row:not(:last-child) {
+  margin-bottom: 16px;
+}
 </style>
