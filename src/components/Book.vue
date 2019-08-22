@@ -16,7 +16,11 @@
           >{{ category.name }}</div>
         </div>
 
-        <a href="#" class="btn btn-primary">Détails du livre</a>
+        <router-link
+          tag="a"
+          :to="'/livre/' + book.id + '-' + book.slug"
+          class="btn btn-primary"
+        >Détails du livre</router-link>
       </div>
     </div>
   </div>

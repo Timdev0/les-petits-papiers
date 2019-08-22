@@ -3,6 +3,7 @@ import Router from 'vue-router';
 
 import Home from './views/Home.vue';
 import Books from './views/Books.vue';
+import BookDetail from './views/BookDetail.vue';
 import Search from './views/Search.vue';
 import Paper from './views/Paper.vue';
 
@@ -39,6 +40,11 @@ export default new Router({
       path: '/papiers/:category',
       name: 'paper',
       component: Paper,
+    },
+    {
+      path: '/livre/:id',
+      name: 'book-detail',
+      component: BookDetail,
     },
   ],
 });
