@@ -1,7 +1,13 @@
 <template>
   <div id="book-component">
     <div class="card">
-      <img :src="book.image.url" class="card-img-top" :alt="book.name" />
+      <router-link
+        tag="a"
+        :to="'/livre/' + book.id + '-' + book.slug"
+        class=""
+      >
+        <img :src="book.image.url" class="card-img-top" :alt="book.name" />
+      </router-link>
 
       <div class="card-body">
         <h5 class="card-title">{{book.name}}</h5>
