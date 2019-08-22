@@ -1,7 +1,13 @@
 <template>
   <div id="navbar-component">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-      <router-link to="/" tag="a" class="navbar-brand">Les Petits Papiers</router-link>
+      <router-link to="/" tag="a" class="navbar-brand">
+        <img
+          class="img-fluid img-petit-papier"
+          src="../assets/images/petits-papiers-transparent.png"
+          alt="les-petis-papiers"
+        >
+      </router-link>
 
       <button
         class="navbar-toggler"
@@ -55,6 +61,18 @@
 
           <button @click="search" class="btn btn-secondary my-2 my-sm-0">Recherche</button>
         </div>
+        <ul class="social-media list-inline">
+            <li class="list-inline-item">
+              <a href="https://www.facebook.com/LES-PETITS-PAPIERS-132739600134666/" class="social-btn" target="_blank">
+                <i class="ion-logo-facebook"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://www.instagram.com/lespetitspapiersdemoret/" class="social-btn" target="_blank">
+                <i class="ion-logo-instagram"></i>
+              </a>
+            </li>
+          </ul>
       </div>
     </nav>
   </div>
@@ -79,3 +97,22 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+  .img-petit-papier{
+    max-height: 40px;
+  }
+  ul.social-media{
+    margin: unset;
+    padding: none;
+    list-style-type: none;
+    margin-left: 1rem;
+    li {
+      a{
+        i{
+          font-size: 23px
+        }
+      }
+    }
+  }
+</style>
