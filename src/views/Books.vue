@@ -24,7 +24,7 @@
       </div>
 
       <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-secondary">Précédent</button>
+        <button type="button" class="btn btn-secondary" @click="before">Précédent</button>
 
         <button type="button" class="btn btn-secondary" @click="next">Suivant</button>
       </div>
@@ -35,7 +35,7 @@
 <script>
 import { SelfBuildingSquareSpinner } from 'epic-spinners';
 
-import { AllBooks } from '../queries';
+import { AllBooks, AllBooksMeta } from '../queries';
 import { chunkMixin } from '../mixins/chunk';
 import { itemsPerRowMixin } from '../mixins/items-per-row';
 import Book from '../components/Book.vue';
@@ -51,6 +51,8 @@ export default {
   },
 
   apollo: {
+    _allBooksMeta: AllBooksMeta,
+
     allBooks() {
       return {
         query: AllBooks,
@@ -74,7 +76,19 @@ export default {
 
   methods: {
     next() {
-      this.skip += this.first;
+      if (this.skip + this.first < this._allBooksMeta.count) {
+        this.skip += this.first;
+
+        window.scrollTo(0, 0);
+      }
+    },
+
+    before() {
+      if (this.skip - this.first >= 0) {
+        this.skip -= this.first;
+
+        window.scrollTo(0, 0);
+      }
     },
   },
 };

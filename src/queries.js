@@ -1,6 +1,17 @@
 import gql from 'graphql-tag';
 
 /**
+ * Meta data for the AllBooks model, retrieve the length of the AllBooks array
+ */
+export const AllBooksMeta = gql`
+  query AllBooksMeta {
+    _allBooksMeta {
+      count
+    }
+  }
+`;
+
+/**
  * Retrieve a list of all books available.
  * Make sure to build the permalink with `slug-id`.
  */
