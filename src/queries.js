@@ -32,7 +32,7 @@ export const AllBooks = gql`
       author {
         name
       }
-      categorie {
+      category {
         name
       }
       editor {
@@ -70,7 +70,7 @@ export const AllBooksSearch = gql`
       author {
         name
       }
-      categorie {
+      category {
         name
       }
       editor {
@@ -100,7 +100,7 @@ export const Book = gql`
       author {
         name
       }
-      categorie {
+      category {
         name
       }
       editor {
@@ -151,7 +151,7 @@ export const Home = gql`
         author {
           name
         }
-        categorie {
+        category {
           name
         }
         editor {
@@ -184,7 +184,7 @@ export const Paper = gql`
           author {
             name
           }
-          categorie {
+          category {
             name
           }
           editor {
@@ -211,7 +211,7 @@ export const Paper = gql`
           author {
             name
           }
-          categorie {
+          category {
             name
           }
           editor {
@@ -238,7 +238,7 @@ export const Paper = gql`
           author {
             name
           }
-          categorie {
+          category {
             name
           }
           editor {
