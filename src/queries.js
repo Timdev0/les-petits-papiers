@@ -87,9 +87,16 @@ export const Book = gql`
   query Book($id: ItemId!) {
     book(filter: {id: {eq: $id}}) {
       id
+      name
+      ean13
+      isbn
       slug
       publishDate
       summary
+      available
+      collection{
+        nom
+      }
       author {
         name
       }
@@ -98,6 +105,11 @@ export const Book = gql`
       }
       editor {
         name
+      }
+      image {
+        url
+        width
+        height
       }
     }
   }
