@@ -45,7 +45,8 @@ export default {
   mixins: [chunkMixin, itemsPerRowMixin],
 
   data() {
-    const url = new URL(window.location.href);
+    const urlWithoutHash = window.location.href.replace('/#/', '/');
+    const url = new URL(urlWithoutHash);
     const decodedQuery = decodeURIComponent(
       url.searchParams.get('query') || '',
     );
@@ -72,6 +73,10 @@ export default {
 
       this.query = decodedQuery;
     },
+  },
+
+  beforeMount() {
+
   },
 };
 </script>
