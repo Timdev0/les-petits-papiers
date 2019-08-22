@@ -1,10 +1,6 @@
 <template>
   <div id="search-view">
-    <div v-if="$apollo.loading" class="loading-screen container">
-      <self-building-square-spinner :animation-duration="3000" :size="50" color="#2C3E50" />
-
-      <p>Recherche en cours pour le livre "{{query}}"...</p>
-    </div>
+    <loading v-if="$apollo.loading" :loading="$apollo.loading" :text="'Recherche en cours...'" />
 
     <div v-else class="search-container container">
       <h2>Résultats de votre recherche "{{query}}"</h2>
@@ -27,19 +23,18 @@
 </template>
 
 <script>
-import { SelfBuildingSquareSpinner } from 'epic-spinners';
-
 import { AllBooksSearch } from '../queries';
 import { chunkMixin } from '../mixins/chunk';
 import { itemsPerRowMixin } from '../mixins/items-per-row';
 import Book from '../components/Book.vue';
+import Loading from '../components/Loading.vue';
 
 export default {
   name: 'search',
 
   components: {
-    SelfBuildingSquareSpinner,
     Book,
+    Loading,
   },
 
   mixins: [chunkMixin, itemsPerRowMixin],
@@ -82,8 +77,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/scss/loading-screen";
-
 h2 {
   font-size: 2rem;
   margin-bottom: 24px;

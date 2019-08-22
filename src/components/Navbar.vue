@@ -71,10 +71,15 @@ export default {
   },
 
   methods: {
+    /**
+     * Only trigger a search if the query is not empty
+     */
     search() {
-      const encodedQuery = encodeURIComponent(this.query);
+      if (this.query.length > 0) {
+        const encodedQuery = encodeURIComponent(this.query);
 
-      this.$router.push(`/recherche?query=${encodedQuery}`);
+        this.$router.push(`/recherche?query=${encodedQuery}`);
+      }
     },
   },
 };

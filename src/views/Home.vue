@@ -1,10 +1,6 @@
 <template>
   <div class="home">
-    <div v-if="$apollo.loading" class="loading-screen container">
-      <self-building-square-spinner :animation-duration="3000" :size="50" color="#2C3E50" />
-
-      <p>Chargement en cours...</p>
-    </div>
+    <loading v-if="$apollo.loading" :loading="$apollo.loading" :text="'Chargement en cours...'" />
 
     <div v-else>
       <div id="home-carousel" class="carousel slide" data-ride="carousel">
@@ -99,19 +95,18 @@
 </template>
 
 <script>
-import { SelfBuildingSquareSpinner } from 'epic-spinners';
-
 import { Home } from '../queries';
 import { chunkMixin } from '../mixins/chunk';
 import { itemsPerRowMixin } from '../mixins/items-per-row';
 import Book from '../components/Book.vue';
+import Loading from '../components/Loading.vue';
 
 export default {
   name: 'home',
 
   components: {
-    SelfBuildingSquareSpinner,
     Book,
+    Loading,
   },
 
   mixins: [chunkMixin, itemsPerRowMixin],
@@ -123,8 +118,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/scss/loading-screen";
-
 .carousel {
   padding-top: 24px;
   background-color: #2c3e50 !important;
