@@ -1,5 +1,7 @@
 import gql from 'graphql-tag';
 
+import { fragments } from './fragments';
+
 /**
  * Meta data for the AllBooks model, retrieve the length of the AllBooks array
  */
@@ -18,28 +20,10 @@ export const AllBooksMeta = gql`
 export const AllBooks = gql`
   query AllBooks($first: IntType, $skip: IntType) {
     allBooks(first: $first, skip: $skip) {
-      id
-      name
-      slug
-      publishDate
-      summary
-      image {
-        url
-        height
-        width
-        alt
-      }
-      author {
-        name
-      }
-      category {
-        name
-      }
-      editor {
-        name
-      }
+      ...book
     }
   }
+  ${fragments.book}
 `;
 
 export const AllBooksSearch = gql`
@@ -56,28 +40,10 @@ export const AllBooksSearch = gql`
         }
       }
     ) {
-      id
-      name
-      slug
-      publishDate
-      summary
-      image {
-        url
-        height
-        width
-        alt
-      }
-      author {
-        name
-      }
-      category {
-        name
-      }
-      editor {
-        name
-      }
+      ...book
     }
   }
+  ${fragments.book}
 `;
 
 /**
@@ -86,33 +52,10 @@ export const AllBooksSearch = gql`
 export const Book = gql`
   query Book($id: ItemId!) {
     book(filter: {id: {eq: $id}}) {
-      id
-      name
-      ean13
-      isbn
-      slug
-      publishDate
-      summary
-      available
-      collection{
-        nom
-      }
-      author {
-        name
-      }
-      category {
-        name
-      }
-      editor {
-        name
-      }
-      image {
-        url
-        width
-        height
-      }
+      ...book
     }
   }
+  ${fragments.book}
 `;
 
 /**
@@ -143,28 +86,11 @@ export const Home = gql`
       }
 
       newBooks {
-        id
-        name
-        slug
-        publishDate
-        summary
-        author {
-          name
-        }
-        category {
-          name
-        }
-        editor {
-          name
-        }
-        image {
-          url
-          width
-          height
-        }
+        ...book
       }
     }
   }
+  ${fragments.book}
 `;
 
 export const Paper = gql`
