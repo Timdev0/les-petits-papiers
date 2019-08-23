@@ -19,10 +19,14 @@
         </div>
       </div>
 
-      <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-secondary" @click="before">Précédent</button>
+      <div class="bottom-pagination row flex justify-content-start align-items-center">
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-primary" @click="before">Précédent</button>
 
-        <button type="button" class="btn btn-secondary" @click="next">Suivant</button>
+          <button type="button" class="btn btn-primary" @click="next">Suivant</button>
+        </div>
+
+        <p class="ml-4 mb-0">{{ _allBooksMeta.count }} livres référencés</p>
       </div>
     </div>
   </div>
@@ -106,6 +110,10 @@ export default {
     font-size: 2rem;
     margin-bottom: 24px;
     text-align: center;
+  }
+
+  .bottom-pagination {
+    margin: 0;
   }
 }
 </style>

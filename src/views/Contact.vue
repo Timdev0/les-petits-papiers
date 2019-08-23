@@ -3,18 +3,28 @@
     <loading v-if="$apollo.loading" :loading="$apollo.loading" :text="'Chargement en cours...'" />
 
     <div v-else class="contact-container container">
-      <h3>Horaires</h3>
+      <div class="row">
+        <div class="col">
+          <h3>Horaires</h3>
 
-      <p v-html="contact.schedule" />
+          <p v-html="contact.schedule" />
+        </div>
 
-      <h3>Contact</h3>
+        <div class="col">
+          <h3>Contact</h3>
 
-      <p class="contact-paragraph container">
-        <i class="ion ion-md-call"></i> <a :href="'tel:' + contact.phoneNumber">{{ contact.phoneNumber }}</a><br>
-        <i class="ion ion-md-mail-open"></i> <a :href="'mailto:' + contact.mail">{{ contact.mail }}</a>
-      </p>
-
-      <p>Retrouvez nous au {{ contact.address }} :</p>
+          <p class="contact-paragraph container">
+            <i class="ion ion-md-call"></i>
+            <a :href="'tel:' + contact.phoneNumber">{{ contact.phoneNumber }}</a>
+            <br />
+            <i class="ion ion-md-mail-open"></i>
+            <a :href="'mailto:' + contact.mail">{{ contact.mail }}</a>
+            <br />
+            <i class="ion ion-md-map"></i>
+            {{ contact.address }}
+          </p>
+        </div>
+      </div>
 
       <div class="google-maps-container">
         <iframe
