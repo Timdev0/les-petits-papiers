@@ -115,7 +115,7 @@ export default {
     li {
       a{
         i{
-          font-size: 23px
+          font-size: 33px
         }
       }
     }
