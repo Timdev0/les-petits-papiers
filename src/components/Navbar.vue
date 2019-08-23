@@ -31,6 +31,10 @@
             <router-link class="nav-link" to="/livres" tag="a">Livres</router-link>
           </li>
 
+          <li class="nav-item">
+            <router-link class="nav-link" to="/contact" tag="a">Contact</router-link>
+          </li>
+
           <li class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle"
@@ -61,26 +65,35 @@
 
           <button @click="search" class="btn btn-secondary my-2 my-sm-0">Recherche</button>
         </div>
-        <ul class="social-media list-inline">
-            <li class="list-inline-item">
-              <a href="https://www.facebook.com/LES-PETITS-PAPIERS-132739600134666/" class="social-btn" target="_blank">
-                <i class="ion-logo-facebook"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="https://www.instagram.com/lespetitspapiersdemoret/" class="social-btn" target="_blank">
-                <i class="ion-logo-instagram"></i>
-              </a>
-            </li>
-          </ul>
+
+        <!-- Display links only if "href" links are loaded from the API -->
+        <ul v-if="!$apollo.queries.contact.loading && contact" class="social-media list-inline">
+          <li class="list-inline-item">
+            <a :href="contact.facebookLink" class="social-btn" target="_blank">
+              <i class="ion-logo-facebook"></i>
+            </a>
+          </li>
+
+          <li class="list-inline-item">
+            <a :href="contact.instagramLink" class="social-btn" target="_blank">
+              <i class="ion-logo-instagram"></i>
+            </a>
+          </li>
+        </ul>
       </div>
     </nav>
   </div>
 </template>
 
 <script>
+import { Contact } from '../queries';
+
 export default {
   name: 'navbar',
+
+  apollo: {
+    contact: Contact,
+  },
 
   data() {
     return {

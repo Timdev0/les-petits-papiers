@@ -6,7 +6,8 @@ import Books from './views/Books.vue';
 import BookDetail from './views/BookDetail.vue';
 import Search from './views/Search.vue';
 import Paper from './views/Paper.vue';
-import notFound from './views/404.vue';
+import NotFound from './views/404.vue';
+import Contact from './views/Contact.vue';
 
 Vue.use(Router);
 
@@ -47,9 +48,14 @@ export default new Router({
       component: BookDetail,
     },
     {
+      path: '/contact',
+      name: 'contact',
+      component: Contact,
+    },
+    {
       path: '/page-introuvable',
       name: '404',
-      component: notFound,
+      component: NotFound,
     },
     {
       path: '*',
