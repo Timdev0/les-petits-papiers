@@ -1,4 +1,10 @@
-require('dotenv').config();
+const path = require('path');
+
+const envPath = path.join(process.cwd(), '/.env.local');
+
+require('dotenv').config({
+  path: envPath,
+});
 
 module.exports = {
   client: {
