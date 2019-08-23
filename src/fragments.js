@@ -33,4 +33,16 @@ export const fragments = {
       }
     }
   `,
+
+  contact: gql`
+    fragment contact on ContactRecord {
+      address
+      mail
+      phoneNumber
+      schedule
+      instagramLink
+      facebookLink
+      googleMapsLink
+    }
+  `,
 };

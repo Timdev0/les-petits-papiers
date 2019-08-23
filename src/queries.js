@@ -180,3 +180,12 @@ export const Paper = gql`
     }
   }
 `;
+
+export const Contact = gql`
+  query Contact {
+    contact {
+      ...contact
+    }
+  }
+  ${fragments.contact}
+`;
