@@ -15,11 +15,7 @@
         <p class="card-text">{{book.author.name}}</p>
 
         <div class="tags">
-          <div
-            v-for="(category, i) in book.categorie"
-            :key="'book-category-' + i"
-            class="category-tag"
-          >{{ category.name }}</div>
+          <div class="category-tag">{{ book.category.name }}</div>
         </div>
 
         <router-link

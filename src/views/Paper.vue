@@ -1,10 +1,6 @@
 <template>
   <div id="paper-view">
-    <div v-if="$apollo.loading" class="loading-screen container">
-      <self-building-square-spinner :animation-duration="3000" :size="50" color="#2C3E50" />
-
-      <p>Chargement en cours...</p>
-    </div>
+    <loading v-if="$apollo.loading" :loading="$apollo.loading" :text="'Chargement en cours...'" />
 
     <div v-else class="paper-container container">
       <h2>Papiers {{category}}</h2>
@@ -13,11 +9,10 @@
 </template>
 
 <script>
-import { SelfBuildingSquareSpinner } from 'epic-spinners';
-
 import { Paper } from '../queries';
 import { chunkMixin } from '../mixins/chunk';
 import { itemsPerRowMixin } from '../mixins/items-per-row';
+import Loading from '../components/Loading.vue';
 
 export default {
   name: 'paper',
@@ -25,7 +20,7 @@ export default {
   mixins: [chunkMixin, itemsPerRowMixin],
 
   components: {
-    SelfBuildingSquareSpinner,
+    Loading,
   },
 
   apollo: {
@@ -55,8 +50,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/scss/loading-screen";
-
 .paper-container {
   margin: 32px auto;
   padding: 24px;

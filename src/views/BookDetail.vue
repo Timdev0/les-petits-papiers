@@ -1,10 +1,6 @@
 <template>
   <div id="book-detail-view">
-    <div v-if="$apollo.loading || !book" class="loading-screen container">
-      <self-building-square-spinner :animation-duration="3000" :size="50" color="#2C3E50" />
-
-      <p>Chargement en cours...</p>
-    </div>
+    <loading v-if="$apollo.loading" :loading="$apollo.loading" :text="'Chargement en cours...'" />
 
     <div v-else class="book-detail-container container">
       <div class="row">
@@ -69,15 +65,14 @@
 </template>
 
 <script>
-import { SelfBuildingSquareSpinner } from 'epic-spinners';
-
 import { Book } from '../queries';
+import Loading from '../components/Loading.vue';
 
 export default {
   name: 'book-detail',
 
   components: {
-    SelfBuildingSquareSpinner,
+    Loading,
   },
 
   computed: {
@@ -124,8 +119,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/scss/loading-screen";
-
 .book-detail-container {
   margin: 32px auto;
   padding: 24px;
