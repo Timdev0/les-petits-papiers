@@ -41,14 +41,14 @@
               <p>Catégorie</p>
             </div>
             <div class="col-6">
-              <p></p>
+              <p>{{ book.category.name }}</p>
             </div>
 
             <div class="col-6">
               <p>Collection</p>
             </div>
             <div class="col-6">
-              <p>{{ book.collection.nom }}</p>
+              <p>{{ book.collection.name }}</p>
             </div>
 
             <div class="col-6">
