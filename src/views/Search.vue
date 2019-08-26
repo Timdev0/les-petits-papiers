@@ -42,12 +42,18 @@ export default {
   data() {
     const urlWithoutHash = window.location.href.replace('/#/', '/');
     const url = new URL(urlWithoutHash);
+
     const decodedQuery = decodeURIComponent(
       url.searchParams.get('query') || '',
     );
 
+    const decodedCategory = decodeURIComponent(
+      url.searchParams.get('category') || '',
+    );
+
     return {
       query: decodedQuery,
+      category: decodedCategory,
     };
   },
 
@@ -57,6 +63,7 @@ export default {
       variables() {
         return {
           searchRegex: `(${this.query})`,
+          categoryId: this.category ? this.category : undefined,
         };
       },
     },
@@ -68,10 +75,6 @@ export default {
 
       this.query = decodedQuery;
     },
-  },
-
-  beforeMount() {
-
   },
 };
 </script>

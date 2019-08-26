@@ -27,7 +27,7 @@ export const AllBooks = gql`
 `;
 
 export const AllBooksSearch = gql`
-  query AllBooksSearch($searchRegex: String!) {
+  query AllBooksSearch($searchRegex: String!, $categoryId: ItemId) {
     allBooks(
       first: 6,
       skip: 0,
@@ -37,7 +37,12 @@ export const AllBooksSearch = gql`
             pattern: $searchRegex,
             caseSensitive: false
           }
-        }
+        },
+        OR: [
+          {
+            category: { eq: $categoryId }
+          }
+        ]
       }
     ) {
       ...book
@@ -73,6 +78,15 @@ export const Book = gql`
     }
   }
   ${fragments.book}
+`;
+
+export const AllCategories = gql`
+  query Categories {
+    allCategories {
+      id
+      name
+    }
+  }
 `;
 
 /**

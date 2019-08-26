@@ -5,6 +5,36 @@
     <div v-else class="books-container container">
       <h2>Liste des livres disponibles</h2>
 
+      <div class="container mb-4">
+        <div class="row items-center">
+          <div class="col-4">
+            <p class="font-bold mb-0">Catégorie</p>
+          </div>
+
+          <div class="col-8">
+            <select v-model="filters.category" class="form-control">
+              <option
+                v-for="(category, i) in allCategories"
+                :key="'select-category-' + i"
+                :value="category.id"
+              >{{ category.name }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row items-center">
+          <div class="col-4">
+            <p class="font-bold mb-0">Mots clé</p>
+          </div>
+
+          <div class="col-8">
+            <input v-model="filters.query" type="text" class="form-control" placeholder="Nom de livre, auteur, ...">
+          </div>
+        </div>
+
+        <button @click="search" type="button" class="btn btn-primary">Rechercher</button>
+      </div>
+
       <div
         v-for="(booksGroup, i) in chunk(allBooks, itemsPerRow)"
         :key="'book-group-' + i"
@@ -33,7 +63,7 @@
 </template>
 
 <script>
-import { AllBooks, AllBooksMeta } from '../queries';
+import { AllBooks, AllBooksMeta, AllCategories } from '../queries';
 import { chunkMixin } from '../mixins/chunk';
 import { itemsPerRowMixin } from '../mixins/items-per-row';
 import Book from '../components/Book.vue';
@@ -52,6 +82,8 @@ export default {
   apollo: {
     _allBooksMeta: AllBooksMeta,
 
+    allCategories: AllCategories,
+
     allBooks() {
       return {
         query: AllBooks,
@@ -68,8 +100,12 @@ export default {
 
   data() {
     return {
-      first: 6,
+      first: 12,
       skip: 0,
+      filters: {
+        category: -1,
+        query: '',
+      },
     };
   },
 
@@ -88,6 +124,22 @@ export default {
 
         window.scrollTo(0, 0);
       }
+    },
+
+    search() {
+      const params = new URLSearchParams();
+
+      if (this.filters.query && this.filters.query.length > 0) {
+        params.append('query', this.filters.query || '');
+      }
+
+      if (this.filters.category && this.filters.category > -1) {
+        params.append('category', this.filters.category || -1);
+      }
+
+      const encodedParams = params.toString();
+
+      this.$router.push(`/recherche?${encodedParams}`);
     },
   },
 };
