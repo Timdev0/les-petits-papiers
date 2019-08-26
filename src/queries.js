@@ -46,6 +46,23 @@ export const AllBooksSearch = gql`
   ${fragments.book}
 `;
 
+export const RelatedBooks = gql`
+  query RelatedBooks($authorId: ItemId) {
+    allBooks(
+      first: 6,
+      skip: 0,
+      filter: {
+        author: {
+          in: [$authorId]
+        }
+      }
+    ) {
+      ...book
+    }
+  }
+  ${fragments.book}
+`;
+
 /**
  * Find a book by its ID.
  */

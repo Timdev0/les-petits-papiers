@@ -13,22 +13,27 @@ export const fragments = {
       slug
 
       image {
+        id
         url
       }
 
       author {
+        id
         name
       }
 
       editor {
+        id
         name
       }
 
       category {
+        id
         name
       }
 
       collection {
+        id
         name
       }
     }

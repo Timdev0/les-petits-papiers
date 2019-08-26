@@ -23,6 +23,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import 'assets/styles/tailwind.postcss';
+
 @import "../node_modules/bootswatch/dist/flatly/variables";
 @import "../node_modules/bootstrap/scss/bootstrap";
 @import "../node_modules/bootswatch/dist/flatly/bootswatch";
