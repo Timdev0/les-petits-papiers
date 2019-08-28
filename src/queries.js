@@ -126,90 +126,34 @@ export const Home = gql`
 
 export const Paper = gql`
   query Paper {
-    paper {
-      adultsBooks {
-        description
-        video {
-          url
-        }
-        existingBook {
-          id
-          name
-          slug
-          publishDate
-          summary
-          author {
-            name
-          }
-          category {
-            name
-          }
-          editor {
-            name
-          }
-          image {
-            url
-            width
-            height
-          }
-        }
+    adultsPaper {
+      id
+      description
+
+      showcasedBook {
+        ...book
       }
-      teensBooks {
-        description
-        video {
-          url
-        }
-        existingBook {
-          id
-          name
-          slug
-          publishDate
-          summary
-          author {
-            name
-          }
-          category {
-            name
-          }
-          editor {
-            name
-          }
-          image {
-            url
-            width
-            height
-          }
-        }
+    }
+
+    teensPaper {
+      id
+      description
+
+      showcasedBook {
+        ...book
       }
-      kidsBooks {
-        description
-        video {
-          url
-        }
-        existingBook {
-          id
-          name
-          slug
-          publishDate
-          summary
-          author {
-            name
-          }
-          category {
-            name
-          }
-          editor {
-            name
-          }
-          image {
-            url
-            width
-            height
-          }
-        }
+    }
+
+    kidsPaper {
+      id
+      description
+
+      showcasedBook {
+        ...book
       }
     }
   }
+  ${fragments.book}
 `;
 
 export const Contact = gql`

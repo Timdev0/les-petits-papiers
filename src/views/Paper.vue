@@ -3,33 +3,23 @@
     <loading v-if="$apollo.loading" :loading="$apollo.loading" :text="'Chargement en cours...'" />
 
     <div v-else class="paper-container container">
-      <h2>Papiers {{category}}</h2>
+      <h2 class="mb-4">Papiers {{category}}</h2>
+
+      <p v-html="paper.description" class="text-base" />
 
       <div
-        v-for="(papersGroup, i) in chunk(iterableBooks, itemsPerRow)"
-        :key="'papers-group-' + i"
+        v-for="(booksGroup, i) in chunk(paper.showcasedBook, itemsPerRow)"
+        :key="'books-group-' + i"
         class="row justify-content-between"
       >
         <div
-          v-for="(paper, e) in papersGroup"
-          :key="'paper-item-' + e"
-          class="paper-item col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 align-items-stretch"
+          v-for="(book, e) in booksGroup"
+          :key="'book-item-' + e"
+          class="book-item col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 align-items-stretch"
         >
-          <img
-            :src="paper.existingBook.image.url"
-            :alt="paper.existingBook.name"
-            class="img-thumbnail"
-          />
+          <book :book="book" class="mb-4" />
 
-          <p v-html="paper.description"></p>
-
-          <router-link
-            tag="a"
-            class="btn btn-info mb-4"
-            :to="'/livre/' + paper.existingBook.id + '-' + paper.existingBook.slug"
-          >Plus de détails</router-link>
-
-          <a class="btn btn-info" target="_blank" :href="'mailto:' + contact.mail">Réserver</a>
+          <a class="btn btn-info w-full" target="_blank" :href="'mailto:' + contact.mail">Réserver</a>
         </div>
       </div>
     </div>
@@ -41,6 +31,7 @@ import { Paper, Contact } from '../queries';
 import { chunkMixin } from '../mixins/chunk';
 import { itemsPerRowMixin } from '../mixins/items-per-row';
 import Loading from '../components/Loading.vue';
+import Book from '../components/Book.vue';
 
 export default {
   name: 'paper',
@@ -49,10 +40,13 @@ export default {
 
   components: {
     Loading,
+    Book,
   },
 
   apollo: {
-    paper: Paper,
+    adultsPaper: Paper,
+    teensPaper: Paper,
+    kidsPaper: Paper,
     contact: Contact,
   },
 
@@ -63,16 +57,16 @@ export default {
   },
 
   computed: {
-    iterableBooks() {
+    paper() {
       if (this.category === 'enfants') {
-        return this.paper.kidsBooks || [];
+        return this.kidsPaper;
       }
 
       if (this.category === 'ados') {
-        return this.teensBooks || [];
+        return this.teensPaper;
       }
 
-      return this.paper.adultsBooks || [];
+      return this.adultsPaper;
     },
   },
 
