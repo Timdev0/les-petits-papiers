@@ -8,6 +8,7 @@ import Search from './views/Search.vue';
 import Paper from './views/Paper.vue';
 import NotFound from './views/404.vue';
 import Contact from './views/Contact.vue';
+import Stationery from './views/Stationery.vue';
 
 Vue.use(Router);
 
@@ -51,6 +52,11 @@ export default new Router({
       path: '/contact',
       name: 'contact',
       component: Contact,
+    },
+    {
+      path: '/stationery',
+      name: 'stationery',
+      component: Stationery,
     },
     {
       path: '/page-introuvable',
