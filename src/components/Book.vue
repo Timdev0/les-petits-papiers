@@ -4,9 +4,9 @@
       <router-link
         tag="a"
         :to="'/livre/' + book.id + '-' + book.slug"
-        class=""
+        class="inline-block h-full align-middle"
       >
-        <img :src="book.image.url" class="card-img-top" :alt="book.name" />
+        <img :src="book.image.url" class="card-img-top inline-block h-full align-middle" :alt="book.name" />
       </router-link>
 
       <div class="card-body">

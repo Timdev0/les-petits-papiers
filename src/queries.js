@@ -27,7 +27,7 @@ export const AllBooks = gql`
 `;
 
 export const AllBooksSearch = gql`
-  query AllBooksSearch($searchRegex: String!) {
+  query AllBooksSearch($searchRegex: String!, $categoryId: ItemId) {
     allBooks(
       first: 6,
       skip: 0,
@@ -37,7 +37,12 @@ export const AllBooksSearch = gql`
             pattern: $searchRegex,
             caseSensitive: false
           }
-        }
+        },
+        OR: [
+          {
+            category: { eq: $categoryId }
+          }
+        ]
       }
     ) {
       ...book
@@ -75,6 +80,15 @@ export const Book = gql`
   ${fragments.book}
 `;
 
+export const AllCategories = gql`
+  query Categories {
+    allCategories {
+      id
+      name
+    }
+  }
+`;
+
 /**
  * Home model (carousel).
  */
@@ -84,6 +98,7 @@ export const Home = gql`
       reserve
       school
       enableSchoolLists
+      textNewBooks
 
       carousel {
         id
@@ -112,90 +127,34 @@ export const Home = gql`
 
 export const Paper = gql`
   query Paper {
-    paper {
-      adultsBooks {
-        description
-        video {
-          url
-        }
-        existingBook {
-          id
-          name
-          slug
-          publishDate
-          summary
-          author {
-            name
-          }
-          category {
-            name
-          }
-          editor {
-            name
-          }
-          image {
-            url
-            width
-            height
-          }
-        }
+    adultsPaper {
+      id
+      description
+
+      showcasedBook {
+        ...book
       }
-      teensBooks {
-        description
-        video {
-          url
-        }
-        existingBook {
-          id
-          name
-          slug
-          publishDate
-          summary
-          author {
-            name
-          }
-          category {
-            name
-          }
-          editor {
-            name
-          }
-          image {
-            url
-            width
-            height
-          }
-        }
+    }
+
+    teensPaper {
+      id
+      description
+
+      showcasedBook {
+        ...book
       }
-      kidsBooks {
-        description
-        video {
-          url
-        }
-        existingBook {
-          id
-          name
-          slug
-          publishDate
-          summary
-          author {
-            name
-          }
-          category {
-            name
-          }
-          editor {
-            name
-          }
-          image {
-            url
-            width
-            height
-          }
-        }
+    }
+
+    kidsPaper {
+      id
+      description
+
+      showcasedBook {
+        ...book
       }
     }
   }
+  ${fragments.book}
 `;
 
 export const Contact = gql`

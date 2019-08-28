@@ -1,4 +1,4 @@
-export const itemsPerRowMixin = {
+export const smallItemsPerRowMixin = {
   data() {
     return {
       windowWidth: window.innerWidth,
@@ -10,11 +10,11 @@ export const itemsPerRowMixin = {
     calculateItemsPerRow() {
       const width = window.innerWidth;
 
-      if (width < 768) {
+      if (width < 992) {
         return 2;
       }
 
-      if (width < 992) {
+      if (width < 1200) {
         return 3;
       }
 

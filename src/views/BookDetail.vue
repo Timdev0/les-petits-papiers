@@ -6,6 +6,8 @@
       <div class="row">
         <div class="col-md-4">
           <img class="img-fluid rounded shadow-2xl mb-4" :src="book.image.url" alt="">
+
+          <a class="btn btn-info w-full mb-4" target="_blank" :href="'mailto:' + contact.mail">Réserver</a>
         </div>
 
         <div class="col-md-8 order-1">
@@ -99,7 +101,7 @@
               <div
                 v-for="(book, e) in booksGroup"
                 :key="'all-books-item-' + e"
-                class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 d-flex align-items-stretch"
+                class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-6 d-flex align-items-stretch"
               >
                 <book :book="book" class="d-flex align-items-stretch" />
               </div>
@@ -113,15 +115,15 @@
 
 <script>
 import { chunkMixin } from '../mixins/chunk';
-import { itemsPerRowMixin } from '../mixins/items-per-row';
-import { Book, RelatedBooks } from '../queries';
+import { smallItemsPerRowMixin } from '../mixins/small-items-per-row';
+import { Book, RelatedBooks, Contact } from '../queries';
 import BookComponent from '../components/Book.vue';
 import Loading from '../components/Loading.vue';
 
 export default {
   name: 'book-detail',
 
-  mixins: [chunkMixin, itemsPerRowMixin],
+  mixins: [chunkMixin, smallItemsPerRowMixin],
 
   components: {
     Loading,
@@ -158,6 +160,8 @@ export default {
   },
 
   apollo: {
+    contact: Contact,
+
     book() {
       return {
         query: Book,
