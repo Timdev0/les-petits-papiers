@@ -52,6 +52,9 @@
               <router-link class="dropdown-item" to="/papiers/enfants">Papiers enfants</router-link>
             </div>
           </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/stationery" tag="a">Papeterie</router-link>
+          </li>
         </ul>
 
         <div class="form-inline my-2 my-lg-0">
