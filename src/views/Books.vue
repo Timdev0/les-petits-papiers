@@ -7,79 +7,6 @@
 
       <book-search-filters class="mb-20" />
 
-      <!-- <div class="container mb-16">
-        <div class="row items-center">
-          <div class="col-4">
-            <p class="font-bold mb-0">Catégorie</p>
-          </div>
-
-          <div class="col-8">
-            <select v-model="filters.category" class="form-control">
-              <option :value="-1">Toutes catégories</option>
-
-              <option
-                v-for="(category, i) in allCategories"
-                :key="'select-category-' + i"
-                :value="category.id"
-              >{{ category.name }}</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="row items-center">
-          <div class="col-4">
-            <p class="font-bold mb-0">Auteur</p>
-          </div>
-
-          <div class="col-8">
-            <select v-model="filters.author" class="form-control">
-              <option :value="-1">Tous les auteurs</option>
-
-              <option
-                v-for="(author, i) in allAuthors"
-                :key="'select-author-' + i"
-                :value="author.id"
-              >{{ author.name }}</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="row items-center">
-          <div class="col-4">
-            <p class="font-bold mb-0">Editeur</p>
-          </div>
-
-          <div class="col-8">
-            <select v-model="filters.editor" class="form-control">
-              <option :value="-1">Tous les éditeurs</option>
-
-              <option
-                v-for="(editor, i) in allEditors"
-                :key="'select-editor-' + i"
-                :value="editor.id"
-              >{{ editor.name }}</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="row items-center">
-          <div class="col-4">
-            <p class="font-bold mb-0">Mots clé</p>
-          </div>
-
-          <div class="col-8">
-            <input
-              v-model="filters.query"
-              type="text"
-              class="form-control"
-              placeholder="Nom de livre, auteur, éditeur, ..."
-            >
-          </div>
-        </div>
-
-        <button @click="search" type="button" class="btn btn-primary float-right mt-1">Rechercher</button>
-      </div> -->
-
       <div
         v-for="(booksGroup, i) in chunk(allBooks, itemsPerRow)"
         :key="'book-group-' + i"
@@ -109,7 +36,11 @@
 
 <script>
 import {
-  AllBooks, AllBooksMeta, AllCategories, AllAuthors, AllEditors,
+  AllBooks,
+  AllBooksMeta,
+  AllCategories,
+  AllAuthors,
+  AllEditors,
 } from '../queries';
 import { chunkMixin } from '../mixins/chunk';
 import { itemsPerRowMixin } from '../mixins/items-per-row';
