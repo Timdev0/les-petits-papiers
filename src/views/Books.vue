@@ -5,7 +5,7 @@
     <div v-else class="books-container container">
       <h2>Liste des livres disponibles</h2>
 
-      <div class="container mb-4">
+      <div class="container mb-16">
         <div class="row items-center">
           <div class="col-4">
             <p class="font-bold mb-0">Catégorie</p>
@@ -13,6 +13,8 @@
 
           <div class="col-8">
             <select v-model="filters.category" class="form-control">
+              <option :value="-1">Toutes catégories</option>
+
               <option
                 v-for="(category, i) in allCategories"
                 :key="'select-category-' + i"
@@ -24,15 +26,56 @@
 
         <div class="row items-center">
           <div class="col-4">
+            <p class="font-bold mb-0">Auteur</p>
+          </div>
+
+          <div class="col-8">
+            <select v-model="filters.author" class="form-control">
+              <option :value="-1">Tous les auteurs</option>
+
+              <option
+                v-for="(author, i) in allAuthors"
+                :key="'select-author-' + i"
+                :value="author.id"
+              >{{ author.name }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row items-center">
+          <div class="col-4">
+            <p class="font-bold mb-0">Editeur</p>
+          </div>
+
+          <div class="col-8">
+            <select v-model="filters.editor" class="form-control">
+              <option :value="-1">Tous les éditeurs</option>
+
+              <option
+                v-for="(editor, i) in allEditors"
+                :key="'select-editor-' + i"
+                :value="editor.id"
+              >{{ editor.name }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row items-center">
+          <div class="col-4">
             <p class="font-bold mb-0">Mots clé</p>
           </div>
 
           <div class="col-8">
-            <input v-model="filters.query" type="text" class="form-control" placeholder="Nom de livre, auteur, ...">
+            <input
+              v-model="filters.query"
+              type="text"
+              class="form-control"
+              placeholder="Nom de livre, auteur, éditeur, ..."
+            >
           </div>
         </div>
 
-        <button @click="search" type="button" class="btn btn-primary">Rechercher</button>
+        <button @click="search" type="button" class="btn btn-primary float-right mt-1">Rechercher</button>
       </div>
 
       <div
@@ -63,7 +106,9 @@
 </template>
 
 <script>
-import { AllBooks, AllBooksMeta, AllCategories } from '../queries';
+import {
+  AllBooks, AllBooksMeta, AllCategories, AllAuthors, AllEditors,
+} from '../queries';
 import { chunkMixin } from '../mixins/chunk';
 import { itemsPerRowMixin } from '../mixins/items-per-row';
 import Book from '../components/Book.vue';
@@ -83,6 +128,10 @@ export default {
     _allBooksMeta: AllBooksMeta,
 
     allCategories: AllCategories,
+
+    allAuthors: AllAuthors,
+
+    allEditors: AllEditors,
 
     allBooks() {
       return {
@@ -104,6 +153,8 @@ export default {
       skip: 0,
       filters: {
         category: -1,
+        author: -1,
+        editor: -1,
         query: '',
       },
     };
@@ -137,6 +188,14 @@ export default {
         params.append('category', this.filters.category || -1);
       }
 
+      if (this.filters.author && this.filters.author > -1) {
+        params.append('author', this.filters.author || -1);
+      }
+
+      if (this.filters.editor && this.filters.editor > -1) {
+        params.append('editor', this.filters.editor || -1);
+      }
+
       const encodedParams = params.toString();
 
       this.$router.push(`/recherche?${encodedParams}`);
@@ -149,7 +208,7 @@ export default {
 .row {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 24px;
+  margin-bottom: 0.5rem;
 }
 
 .books-container {

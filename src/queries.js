@@ -27,7 +27,7 @@ export const AllBooks = gql`
 `;
 
 export const AllBooksSearch = gql`
-  query AllBooksSearch($searchRegex: String!, $categoryId: ItemId) {
+  query AllBooksSearch($searchRegex: String!, $categoryId: ItemId, $authorId: ItemId, $editorId: ItemId) {
     allBooks(
       first: 6,
       skip: 0,
@@ -41,6 +41,12 @@ export const AllBooksSearch = gql`
         OR: [
           {
             category: { eq: $categoryId }
+          },
+          {
+            author: { eq: $authorId }
+          },
+          {
+            editor: { eq: $editorId }
           }
         ]
       }
@@ -83,6 +89,24 @@ export const Book = gql`
 export const AllCategories = gql`
   query Categories {
     allCategories {
+      id
+      name
+    }
+  }
+`;
+
+export const AllAuthors = gql`
+  query Authors {
+    allAuthors {
+      id
+      name
+    }
+  }
+`;
+
+export const AllEditors = gql`
+  query Editors {
+    allEditors {
       id
       name
     }

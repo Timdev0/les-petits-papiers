@@ -3,7 +3,7 @@
     <loading v-if="$apollo.loading" :loading="$apollo.loading" :text="'Recherche en cours...'" />
 
     <div v-else class="search-container container">
-      <h2>Résultats de votre recherche "{{query}}"</h2>
+      <h2>Résultats de votre recherche</h2>
 
       <div
         v-for="(booksGroup, i) in chunk(allBooks, itemsPerRow)"
@@ -51,9 +51,19 @@ export default {
       url.searchParams.get('category') || '',
     );
 
+    const decodedAuthor = decodeURIComponent(
+      url.searchParams.get('author') || '',
+    );
+
+    const decodedEditor = decodeURIComponent(
+      url.searchParams.get('editor') || '',
+    );
+
     return {
       query: decodedQuery,
       category: decodedCategory,
+      author: decodedAuthor,
+      editor: decodedEditor,
     };
   },
 
@@ -63,7 +73,9 @@ export default {
       variables() {
         return {
           searchRegex: `(${this.query})`,
-          categoryId: this.category ? this.category : undefined,
+          categoryId: this.category ? this.category : null,
+          authorId: this.author ? this.author : null,
+          editorId: this.editor ? this.editor : null,
         };
       },
     },
@@ -88,7 +100,6 @@ h2 {
 
 .row {
   display: flex;
-  justify-content: space-between;
   margin-bottom: 24px;
 }
 
