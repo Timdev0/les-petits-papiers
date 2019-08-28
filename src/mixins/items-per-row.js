@@ -14,7 +14,7 @@ export const itemsPerRowMixin = {
         return 2;
       }
 
-      if (width < 1200) {
+      if (width < 992) {
         return 3;
       }
 

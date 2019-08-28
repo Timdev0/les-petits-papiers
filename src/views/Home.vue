@@ -84,7 +84,7 @@
           <div
             v-for="(book, e) in booksGroup"
             :key="'new-book-' + e"
-            class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 d-flex align-items-stretch"
+            class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6 d-flex align-items-stretch"
           >
             <book :book="book" class="d-flex align-items-stretch" />
           </div>

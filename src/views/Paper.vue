@@ -15,7 +15,7 @@
         <div
           v-for="(book, e) in booksGroup"
           :key="'book-item-' + e"
-          class="book-item col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 align-items-stretch"
+          class="book-item col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6 align-items-stretch"
         >
           <book :book="book" class="mb-4" />
 
