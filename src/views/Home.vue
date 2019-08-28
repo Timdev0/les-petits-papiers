@@ -74,7 +74,9 @@
       </div>
 
       <div class="container new-books">
-        <h2>Nouveautés</h2>
+        <h2 class="mb-2">Nouveautés</h2>
+
+        <div v-html="home.textNewBooks" />
 
         <div
           v-for="(booksGroup, index) in chunk(home.newBooks, itemsPerRow)"

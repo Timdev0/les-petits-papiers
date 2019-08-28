@@ -98,6 +98,7 @@ export const Home = gql`
       reserve
       school
       enableSchoolLists
+      textNewBooks
 
       carousel {
         id
