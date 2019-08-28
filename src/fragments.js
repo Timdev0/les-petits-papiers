@@ -50,4 +50,23 @@ export const fragments = {
       googleMapsLink
     }
   `,
+
+  stationery: gql`
+    fragment stationery on StationeryRecord {
+      id
+      name
+
+      image{
+        id
+        url
+      }
+
+      category {
+        id
+        name
+      }
+
+    }
+  `,
+
 };

@@ -189,3 +189,21 @@ export const Contact = gql`
   }
   ${fragments.contact}
 `;
+
+export const AllStationery = gql`
+  query AllStationery($first: IntType, $skip: IntType) {
+    stationery(first: $first, skip: $skip) {
+      ...stationery
+    }
+  }
+  ${fragments.stationery}
+`;
+
+export const Stationery = gql`
+  query Stationery($id: ItemId!) {
+    stationery(filter: {id: {eq: $id}}) {
+      ...stationery
+    }
+  }
+  ${fragments.stationery}
+`;
