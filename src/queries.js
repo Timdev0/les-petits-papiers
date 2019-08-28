@@ -190,9 +190,12 @@ export const Contact = gql`
   ${fragments.contact}
 `;
 
-export const AllStationery = gql`
-  query AllStationery($first: IntType, $skip: IntType) {
-    stationery(first: $first, skip: $skip) {
+export const AllStationeries = gql`
+  query AllStationeries($first: IntType, $skip: IntType) {
+    allStationeries(
+      first: $first,
+      skip: $skip
+    ) {
       ...stationery
     }
   }
@@ -201,7 +204,13 @@ export const AllStationery = gql`
 
 export const Stationery = gql`
   query Stationery($id: ItemId!) {
-    stationery(filter: {id: {eq: $id}}) {
+    stationery(
+      filter: {
+        id: {
+          eq: $id
+        }
+      }
+    ) {
       ...stationery
     }
   }

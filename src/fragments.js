@@ -56,17 +56,14 @@ export const fragments = {
       id
       name
 
-      image{
-        id
+      image {
         url
       }
 
-      category {
+      categoryStationery {
         id
         name
       }
-
     }
   `,
-
 };
