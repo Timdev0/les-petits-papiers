@@ -5,7 +5,9 @@
     <div v-else class="books-container container">
       <h2>Liste des livres disponibles</h2>
 
-      <div class="container mb-16">
+      <book-search-filters class="mb-20" />
+
+      <!-- <div class="container mb-16">
         <div class="row items-center">
           <div class="col-4">
             <p class="font-bold mb-0">Catégorie</p>
@@ -76,7 +78,7 @@
         </div>
 
         <button @click="search" type="button" class="btn btn-primary float-right mt-1">Rechercher</button>
-      </div>
+      </div> -->
 
       <div
         v-for="(booksGroup, i) in chunk(allBooks, itemsPerRow)"
@@ -112,6 +114,7 @@ import {
 import { chunkMixin } from '../mixins/chunk';
 import { itemsPerRowMixin } from '../mixins/items-per-row';
 import Book from '../components/Book.vue';
+import BookSearchFilters from '../components/BookSearchFilters.vue';
 import Loading from '../components/Loading.vue';
 
 export default {
@@ -121,6 +124,7 @@ export default {
 
   components: {
     Book,
+    BookSearchFilters,
     Loading,
   },
 

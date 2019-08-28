@@ -5,6 +5,8 @@
     <div v-else class="search-container container">
       <h2>Résultats de votre recherche</h2>
 
+      <book-search-filters class="mb-20" />
+
       <div
         v-for="(booksGroup, i) in chunk(allBooks, itemsPerRow)"
         :key="'book-group-' + i"
@@ -27,6 +29,7 @@ import { AllBooksSearch } from '../queries';
 import { chunkMixin } from '../mixins/chunk';
 import { itemsPerRowMixin } from '../mixins/items-per-row';
 import Book from '../components/Book.vue';
+import BookSearchFilters from '../components/BookSearchFilters.vue';
 import Loading from '../components/Loading.vue';
 
 export default {
@@ -34,6 +37,7 @@ export default {
 
   components: {
     Book,
+    BookSearchFilters,
     Loading,
   },
 
