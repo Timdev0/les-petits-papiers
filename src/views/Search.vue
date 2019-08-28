@@ -88,8 +88,14 @@ export default {
   watch: {
     $route(to) {
       const decodedQuery = decodeURIComponent(to.query.query || '');
+      const decodedAuthor = decodeURIComponent(to.query.author || -1);
+      const decodedCategory = decodeURIComponent(to.query.category || -1);
+      const decodedEditor = decodeURIComponent(to.query.editor || -1);
 
       this.query = decodedQuery;
+      this.category = decodedCategory;
+      this.author = decodedAuthor;
+      this.editor = decodedEditor;
     },
   },
 };

@@ -2,7 +2,7 @@
   <div id="book-detail-view">
     <loading v-if="$apollo.loading" :loading="$apollo.loading" :text="'Chargement en cours...'" />
 
-    <div v-else class="book-detail-container container">
+    <div v-else-if="book" class="book-detail-container container">
       <div class="row">
         <div class="col-md-4">
           <img class="img-fluid rounded shadow-2xl mb-4" :src="book.image.url" alt="">

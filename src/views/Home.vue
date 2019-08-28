@@ -52,11 +52,11 @@
 
         <p v-html="home.school" />
 
-        <div class="row">
+        <div class="container row justify-between">
           <div
             v-for="(list, index) in home.schoolLists"
             :key="'list-' + index"
-            class="col flex justify-content-center align-items-center"
+            class="flex-col flex justify-content-center align-items-center"
           >
             <a :href="list.url" class>
               <img
