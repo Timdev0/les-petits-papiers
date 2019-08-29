@@ -26,7 +26,7 @@
           tag="a"
           to=""
           class="btn btn-primary"
-        >Détails du livre</router-link>
+        >Détails du produit</router-link>
       </div>
     </div>
   </div>
