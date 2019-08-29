@@ -202,7 +202,7 @@ export const AllStationeries = gql`
   ${fragments.stationery}
 `;
 
-export const StationeryItem = gql`
+export const Stationery = gql`
   query Stationery($id: ItemId!) {
     stationery(
       filter: {

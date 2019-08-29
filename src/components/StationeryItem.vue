@@ -16,6 +16,8 @@
       <div class="card-body">
         <h5 class="card-title">{{stationeryItem.name}}</h5>
 
+        <p class="card-text">{{stationeryItem.price}} €</p>
+
         <div class="tags">
           <div class="category-tag">{{ stationeryItem.categoryStationery.name }}</div>
         </div>

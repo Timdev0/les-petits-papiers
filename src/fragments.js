@@ -55,6 +55,7 @@ export const fragments = {
     fragment stationery on StationeryRecord {
       id
       name
+      price
 
       image {
         url
