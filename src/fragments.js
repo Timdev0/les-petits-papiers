@@ -56,6 +56,9 @@ export const fragments = {
       id
       name
       price
+      description
+      available
+      slug
 
       image {
         url
