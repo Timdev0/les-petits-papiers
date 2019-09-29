@@ -202,6 +202,23 @@ export const AllStationeries = gql`
   ${fragments.stationery}
 `;
 
+export const RelatedStationeries = gql`
+  query RelatedStationeries($categoryId: ItemId) {
+    allStationeries(
+      first: 6,
+      skip: 0,
+      filter: {
+        categoryStationery: {
+          in: [$categoryId]
+        }
+      }
+    ) {
+      ...stationery
+    }
+  }
+  ${fragments.stationery}
+`;
+
 export const Stationery = gql`
   query Stationery($id: ItemId!) {
     stationery(

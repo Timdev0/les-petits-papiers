@@ -3,7 +3,7 @@
     <div class="card">
       <router-link
         tag="a"
-        to=""
+        :to="'/stationery/' + stationeryItem.id + '-' + stationeryItem.slug"
         class="inline-block h-full align-middle"
       >
         <img
@@ -24,7 +24,7 @@
 
         <router-link
           tag="a"
-          to=""
+          :to="'/stationery/' + stationeryItem.id + '-' + stationeryItem.slug"
           class="btn btn-primary"
         >Détails du produit</router-link>
       </div>
