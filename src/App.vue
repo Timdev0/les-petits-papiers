@@ -1,29 +1,55 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <navbar />
+
+    <div class="router-view-wrapper">
+      <router-view />
     </div>
-    <router-view/>
+
+    <footbar />
   </div>
 </template>
 
+<script>
+import Navbar from './components/Navbar.vue';
+import Footbar from './components/Footbar.vue';
+
+export default {
+  components: {
+    Navbar,
+    Footbar,
+  },
+};
+</script>
+
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@import 'assets/styles/tailwind.postcss';
+
+@import "assets/styles/scss/index";
+
+@import "../node_modules/bootswatch/dist/flatly/variables";
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import "../node_modules/bootswatch/dist/flatly/bootswatch";
+
+html,
+body {
+  background-color: #ecf0f1;
 }
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vw;
+  margin-top: 70px;
+  overflow-x: hidden;
+  background-color: #ecf0f1;
+}
+
+.router-view-wrapper {
+  flex-grow: 1;
+}
+
+.row:not(:last-child) {
+  margin-bottom: 16px;
 }
 </style>
