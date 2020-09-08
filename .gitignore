@@ -21,4 +21,5 @@ yarn-error.log*
 
 infos.txt
 
-.vscode
+*.vscode
+settings.json
